@@ -128,7 +128,10 @@ public class PlaylistPageController {
     public void removeFocusedFavPlaylist() {
         if(favorite_playlist.getSelectionModel().getSelectedItem() != null) {
             try(PlaylistDAO pdao = new PlaylistDAO(((Playlist)favorite_playlist.getSelectionModel().getSelectedItem()))) {
-                pdao.removeUserPlaylist();
+                //pdao.removeUserPlaylist();
+                pdao.getSubscribers().remove(AppData.getCurrentUser());
+                AppData.getCurrentUser().getFavoritePlaylists().remove(pdao);
+                pdao.update();
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -235,7 +238,7 @@ public class PlaylistPageController {
 
         String searchTerm = searchTextField.getText();
         if (!searchTerm.isEmpty()) {
-            Set<Playlist> playlistSet = new PlaylistDAO(new Playlist()).getSearchResults(searchTerm);
+            List<Playlist> playlistSet = new PlaylistDAO(new Playlist()).getSearchResults(searchTerm);
             List<Playlist> searchResults = new ArrayList<>();
             searchResults.addAll(playlistSet);
             if (!searchResults.isEmpty()) {
