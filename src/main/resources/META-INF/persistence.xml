@@ -8,7 +8,12 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.juanite.model.domain.Playlist</class>
         <class>com.juanite.model.domain.Song</class>
-        <!-- ... otras clases ... -->
+        <class>com.juanite.model.domain.Album</class>
+        <class>com.juanite.model.domain.Artist</class>
+        <class>com.juanite.model.domain.Admin</class>
+        <class>com.juanite.model.domain.Comment</class>
+        <class>com.juanite.model.domain.Person</class>
+        <class>com.juanite.model.domain.User</class>
 
         <properties>
             <!-- Configuración para la base de datos MySQL -->
