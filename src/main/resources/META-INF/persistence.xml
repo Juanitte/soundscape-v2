@@ -8,24 +8,23 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.juanite.model.domain.Playlist</class>
         <class>com.juanite.model.domain.Song</class>
-        <class>com.juanite.model.domain.Album</class>
-        <class>com.juanite.model.domain.Artist</class>
-        <class>com.juanite.model.domain.Admin</class>
-        <class>com.juanite.model.domain.Comment</class>
-        <class>com.juanite.model.domain.Person</class>
-        <class>com.juanite.model.domain.User</class>
+        <!-- ... otras clases ... -->
 
         <properties>
             <!-- Configuración para la base de datos MySQL -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/soundscape"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
             <property name="javax.persistence.jdbc.password" value=""/>
-
-            <!-- Configuración específica de Hibernate -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="update" />
             <property name="hibernate.show_sql" value="true"/>
+
+            <!-- Configuración para la base de datos H2 -->
+            <property name="hibernate.connection.driver_class" value="org.h2.Driver"/>
+
+            <!-- Configuración específica para crear automáticamente la base de datos en H2 si no existe -->
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto.create_schema" value="true"/>
+            <property name="hibernate.hbm2ddl.auto.create_namespaces" value="true"/>
         </properties>
     </persistence-unit>
 
