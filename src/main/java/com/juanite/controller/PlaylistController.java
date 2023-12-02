@@ -110,7 +110,9 @@ public class PlaylistController {
             try(SongDAO sdao = new SongDAO(((Song)songListView.getSelectionModel().getSelectedItem()))) {
                 plSongs.remove(sdao);
                 try(PlaylistDAO pldao = new PlaylistDAO(AppData.getCurrentPL())) {
-                    pldao.removeSong(sdao);
+                    //pldao.removeSong(sdao);
+                    pldao.getSongs().remove(AppData.getCurrentSong());
+                    pldao.update();
                 }
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -240,7 +242,7 @@ public class PlaylistController {
 
         String searchTerm = searchTextField.getText();
         if (!searchTerm.isEmpty()) {
-            Set<Playlist> playlistSet = new PlaylistDAO(new Playlist()).getSearchResults(searchTerm);
+            List<Playlist> playlistSet = new PlaylistDAO(new Playlist()).getSearchResults(searchTerm);
             List<Playlist> searchResults = new ArrayList<>();
             searchResults.addAll(playlistSet);
             if (!searchResults.isEmpty()) {
