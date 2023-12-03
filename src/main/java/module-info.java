@@ -7,6 +7,10 @@ module com.juanite {
     requires java.sql;
 
     opens com.juanite to javafx.fxml;
+    opens com.juanite.model to org.hibernate.orm.core;
+    opens com.juanite.model.DAO to org.hibernate.orm.core;
+    opens com.juanite.model.domain to org.hibernate.orm.core;
+    opens com.juanite.util to org.hibernate.orm.core;
     exports com.juanite;
     exports com.juanite.controller;
     exports com.juanite.model;

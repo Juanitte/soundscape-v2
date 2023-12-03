@@ -18,7 +18,7 @@ public class AppData {
     private static List<Song> searchResults;
     private static List<Playlist> searchResultsPl;
     private static Comment currentComment;
-    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("soundscapeSQL");
+    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("soundScape");
     private static EntityManager manager = emf.createEntityManager();
 
     public static PasswordAuthentication getPa() {
